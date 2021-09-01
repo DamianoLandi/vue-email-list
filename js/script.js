@@ -5,13 +5,16 @@ new Vue({
         sentence: "",
     },
     methods: {
-        getEmail() {
-            axios
-              .get("https://flynn.boolean.careers/exercises/api/random/mail")
-              .then((res) => {
-                const response = res.data.response;
-                this.emailList.push(response);
-            });
-        },
     },
+    created(){
+        this.emailList = [];
+        for(let i = 0; i < 10; i++){
+            axios
+            .get("https://flynn.boolean.careers/exercises/api/random/mail")
+            .then((res) => {
+              const response = res.data.response;
+              this.emailList.push(response);
+          });
+        }
+    }
   });
